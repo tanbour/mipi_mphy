@@ -46,7 +46,7 @@ always_ff @(posedge clk) begin
   if (reset) begin
     byte_allign <= {10{1'b0}};
   end else begin
-    for (i=1; i<9; i++) begin
+    for (i=0; i<9; i++) begin
       byte_allign[i] <= comma_char == data[i] ? 1'b1 : 1'b0;
     end
   end
@@ -88,6 +88,7 @@ always_ff @(posedge clk) begin
       end
       default : begin
         state <= IDLE;
+        count <= 4'd0;
       end
     endcase
   end
